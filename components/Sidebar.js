@@ -1,33 +1,46 @@
-import { Avatar, IconButton } from '@mui/material';
+import { Avatar, Button, IconButton } from '@mui/material';
 import React from 'react'
 import styled from 'styled-components'
 import ChatIcon from '@mui/icons-material/Chat';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
+import * as EmailValidator from 'email-validator'
 
 function Sidebar() {
-  return (
-    <Container>
-        <Header>        
-            <UserAvatar />
-            <IconsContainer>
-                <IconButton>
-                    <ChatIcon/>
-                </IconButton>
-                <IconButton>
-                    <MoreVertIcon/>
-                </IconButton>
 
-            </IconsContainer>
+    const createChat = () => {
+        const input = promt("Please enter an email address for the user you wish to chat with");
+        if (!input) return null;
+        if  (EmailValidator.validate(input)){
+            // We need to add the chat into the db 'chats' collection
+        }
+            
+    }
+    return (
+        <Container>
+            <Header>        
+                <UserAvatar />
+                <IconsContainer>
+                    <IconButton>
+                        <ChatIcon/>
+                    </IconButton>
+                    <IconButton>
+                        <MoreVertIcon/>
+                    </IconButton>
 
-        </Header>    
-        <Search>   
-            <SearchIcon/>
-            <SearchInput placeholder='Search in chats'/>
-        </Search>   
+                </IconsContainer>
 
-        <SidebarButton>Start a new chat</SidebarButton>
-    </Container>
+            </Header>    
+            <Search>   
+                <SearchIcon/>
+                <SearchInput placeholder='Search in chats'/>
+            </Search>   
+
+            <SidebarButton onClick={createChat}>Start a new chat</SidebarButton>
+
+            {/* List of chats */}
+
+        </Container>
 
     
   )
@@ -73,6 +86,11 @@ const SearchInput = styled.input`
     flex: 1;
 `;
 
-const SidebarButton = styled.button`
+const SidebarButton = styled(Button)`
     width: 100%;
+
+    &&&{
+        border-top: 1px solid whitesmoke;
+        border-bottom: 1 px solid whitesmoke;
+    }
 `;
