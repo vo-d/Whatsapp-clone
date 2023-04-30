@@ -20,8 +20,20 @@ function Login() {
 
 export default Login
 
-const Container = styled.div``
+const Container = styled.div`
+display: grid;
+place-items: center;
+height: 100vh;`
 
-const LoginContainer = styled.div``
+const LoginContainer = styled.div`
+  padding: 100px;
+  display:flex;
+  flex-direction: column; 
+  
+`
 
-const Logo = styled.img``
+const Logo = styled.img`
+  height: 200px;
+  width: 200px;
+  margin-bottom: 50px;
+`
